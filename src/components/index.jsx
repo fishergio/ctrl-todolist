@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import TaskForm from './TaskForm';
+import TasksList from './TasksList';
+import '../index.css';
 
 class App extends Component {
 
@@ -35,10 +37,13 @@ class App extends Component {
   }
 
   render(){
+    const { tasks } = this.state;
 
     return(
       <div>
         < TaskForm addTask={ this.addTaskHandle }/>
+        <hr/>
+        <TasksList tasks={tasks}/>
       </div>
     )
   }
