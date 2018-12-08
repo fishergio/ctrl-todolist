@@ -4,3 +4,7 @@ body {
   font-family: "Roboto", sans-serif;
   color: #333;
 }
+
+.taskItem i {
+  padding: 5px 10px;
+}
