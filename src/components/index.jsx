@@ -68,9 +68,8 @@ class App extends Component {
     const { tasks } = this.state;
 
     return(
-      <div>
-        <TaskForm addTask={this.addTaskHandle} deleteAll={this.deleteAllTasks} />
-        <hr/>
+      <div className="taskContent">
+        <TaskForm tasks={this.state.tasks} addTask={this.addTaskHandle} deleteAll={this.deleteAllTasks} />
         <TasksList tasks={tasks} deleteTask={this.deleteTaskHandle} />
       </div>
     )

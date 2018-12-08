@@ -3,8 +3,97 @@ body {
   padding: 0;
   font-family: "Roboto", sans-serif;
   color: #333;
+  background: #f2f2f2;
 }
 
 .taskItem i {
   padding: 5px 10px;
+}
+
+.taskContent{
+  border: 2px solid rgba(146, 145, 145, 0.062);
+  width: 80%;
+  margin: 20px auto;
+}
+
+.taskFormContent .formTitle{
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.taskFormContent .btnForm{
+  background: #fff;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid #c06014;
+  padding: 5px 10px;
+  text-transform: uppercase;
+  display: block;
+  margin: 25px auto;
+}
+
+.taskFormContent .taskForm{
+  text-align: center;
+}
+.taskFormContent .formControl{
+  font-family: "Roboto", sans-serif;
+  font-size: 1em;
+  color: #666;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  border: 2px solid #c06014;
+  padding: 15px 10px;
+}
+
+.btnFormSubmit{
+  background: #c06014;
+  border: 2px solid #c06014;
+  cursor: pointer;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  padding: 18px 10px;
+  text-transform: uppercase;
+  text-align: center;
+  vertical-align: bottom;
+  margin-left: 3px;
+  outline:none;
+}
+
+.taskList{
+  list-style: none;
+  margin-top: 35px;
+}
+
+.taskList .taskItem{
+  border-bottom: 1px solid #f382264d;
+  margin: 15px 0;
+  padding-top: 10px; 
+}
+
+.taskList .taskItem h3{
+  color: #555;
+  font-size: 16px;
+  margin: 0;
+}
+
+.taskList .taskItem i{
+  color: #c06014;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+@media (max-width: 767px){
+  .taskList .taskItem h3{
+    font-size: 13px;
+  }
+  .taskFormContent .btnForm{
+    display: block;
+    margin: 25px auto;
+  }
+
 }
