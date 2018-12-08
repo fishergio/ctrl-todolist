@@ -10,7 +10,8 @@ const TaskForm = (props) => (
       <input className="btnFormSubmit" type="submit" value="Add Task" />
     </form>
     {
-      (props.tasks.length > 0) &&
+      
+      (props.tasks && props.tasks.length > 0) &&
         <button className="btnForm" onClick={props.deleteAll}>Delete All</button>
     }
   </div>
