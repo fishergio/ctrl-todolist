@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TaskForm from './TaskForm';
 import TasksList from './TasksList';
+import {saveDataLocal, loadDataLocal} from '../services/';
 import '../index.css';
 
 class App extends Component {
@@ -15,6 +16,11 @@ class App extends Component {
     this.addTaskHandle = this.addTaskHandle.bind(this);
   }
 
+  componentDidMount(){
+    let data = loadDataLocal();
+    this.setState({ tasks: data })
+  }
+
   addTaskHandle(e){
   
     e.preventDefault();
@@ -24,14 +30,18 @@ class App extends Component {
     let form = e.target, // Agregar valores de loa inputs a un objeto
     taskData = {
       id: form.id.value,
-      task: form.task.value
+      task: form.task.value,
+      status: false
     }
 
     tasks.push(taskData); // Agregando datos al nuevo array
 
-    console.log(taskData);
+    //console.log(taskData);
 
     this.setState({ tasks: tasks}) // Actualizando el estado
+    
+    saveDataLocal(this.state.tasks);
+    
 
     form.reset(); // Limpiar input del formulario
   }
