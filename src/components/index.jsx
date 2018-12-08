@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import TaskForm from './TaskForm';
 import TasksList from './TasksList';
 import {saveDataLocal, loadDataLocal} from '../services/';
+import uid from 'uid';
+
 import '../index.css';
 
 class App extends Component {
@@ -30,7 +33,7 @@ class App extends Component {
     let form = e.target, // Agregar valores de loa inputs a un objeto
     taskData = {
       id: form.id.value,
-      task: form.task.value,
+      task: (form.task.value) ? form.task.value : App.defaultProps.task,
       status: false
     }
     
@@ -76,4 +79,13 @@ class App extends Component {
   }
 }
 
+App.propTypes = {
+  id: PropTypes.string,
+  task: PropTypes.string.isRequired,
+}
+
+App.defaultProps = {
+  id: uid(5),
+  task: 'Task noName',
+}
 export default App;
