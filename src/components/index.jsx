@@ -14,6 +14,8 @@ class App extends Component {
     }
 
     this.addTaskHandle = this.addTaskHandle.bind(this);
+    this.deleteTaskHandle = this.deleteTaskHandle.bind(this);
+    this.deleteAllTasks = this.deleteAllTasks.bind(this);
   }
 
   componentDidMount(){
@@ -22,8 +24,6 @@ class App extends Component {
   }
 
   addTaskHandle(e){
-  
-    e.preventDefault();
 
     const tasks = this.state.tasks; // Asignar el contendio del estado a un nuevo array
     
@@ -33,17 +33,35 @@ class App extends Component {
       task: form.task.value,
       status: false
     }
-
+    
     tasks.push(taskData); // Agregando datos al nuevo array
-
+    
     //console.log(taskData);
-
+    
     this.setState({ tasks: tasks}) // Actualizando el estado
     
     saveDataLocal(this.state.tasks);
     
+    e.preventDefault();
 
     form.reset(); // Limpiar input del formulario
+  }
+
+  deleteTaskHandle(id){
+    
+    let { tasks } = this.state;
+
+    const filterTasks = tasks.filter( (item) => item.id !== id);
+
+    this.setState({ tasks: filterTasks } );
+
+    saveDataLocal(filterTasks);
+
+  }
+
+  deleteAllTasks(){
+    this.setState({tasks: [] });
+    localStorage.removeItem('tasks');
   }
 
   render(){
@@ -51,9 +69,9 @@ class App extends Component {
 
     return(
       <div>
-        < TaskForm addTask={ this.addTaskHandle }/>
+        <TaskForm addTask={this.addTaskHandle} deleteAll={this.deleteAllTasks} />
         <hr/>
-        <TasksList tasks={tasks}/>
+        <TasksList tasks={tasks} deleteTask={this.deleteTaskHandle} />
       </div>
     )
   }

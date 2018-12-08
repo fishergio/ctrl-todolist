@@ -4,7 +4,9 @@ const Task = (props) => (
   <div className="taskItem">
     <li>
       <h3>
-      <a><i class="fas fa-trash-alt"></i></a>
+        <span>
+          <i className="fas fa-trash-alt" onClick={ (e) => props.delete(props.id )}></i>
+        </span>
       {props.task} </h3>
       {/*<span>Status 0/1</span>*/}
     </li>
